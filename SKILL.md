@@ -5,6 +5,12 @@ description: Re-order the pending task list by priority. The TaskCreate tool iss
 
 # TaskPriorityReorder
 
+> **Shared concepts:** see [`priority-context.md`](priority-context.md)
+> for the append-only-ID problem, the manual/automatic skill split,
+> the delete-then-recreate invariant, and the BBS presentation
+> aesthetic — all referenced by this skill and shared with the
+> companion `triage` skill.
+
 When Aaron wants the task list reordered, this skill captures every pending task's full content, deletes them all, and recreates them in the new desired order. The IDs change (lowest = highest priority), but every task's subject + description + activeForm + metadata is preserved.
 
 ## When to fire

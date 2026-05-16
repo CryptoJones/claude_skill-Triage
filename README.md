@@ -40,7 +40,7 @@ signal-driven counterpart that wraps the [Triage](https://github.com/CryptoJones
 │   append-only, so reordering is delete + recreate.           │
 │                                                              │
 │                                                              │
-│   triage                ◌ planned (Triage v0.7)              │
+│   triage                ◌ planned (Triage v0.9)              │
 │   ─────────────────────────────────────────────────          │
 │   "What should I do next?" Invokes `triage tick` from the    │
 │   Triage CLI, parses the output, surfaces the recommended    │
@@ -70,7 +70,7 @@ The repo is laid out so a single clone yields both the live
 claude_skill-Triage/
 ├── SKILL.md         ← TaskPriorityReorder (live)
 └── triage/
-    ├── SKILL.md     ← placeholder (Triage v0.7)
+    ├── SKILL.md     ← placeholder (Triage v0.9)
     └── README.md
 ```
 
@@ -88,7 +88,7 @@ Claude Code recursively scans the `~/.claude/skills/` tree for any
 `SKILL.md` with frontmatter, so cloning into a parent directory like
 `triage-suite/` exposes the root `TaskPriorityReorder` skill now and
 will pick up the `triage/` subdirectory automatically once its
-`SKILL.md` gains frontmatter at v0.7. No re-install needed.
+`SKILL.md` gains frontmatter at v0.9. No re-install needed.
 
 Restart Claude Code (or open `/hooks` once) for the skill to be picked up.
 
@@ -111,7 +111,7 @@ Explicit invocation: `/TaskPriorityReorder`.
 Full trigger catalog, in-progress task handling, and a worked example
 live in [`SKILL.md`](SKILL.md).
 
-### `triage` *(planned — Triage v0.7)*
+### `triage` *(planned — Triage v0.9)*
 
 Will fire on phrasing like:
 
