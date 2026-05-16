@@ -39,7 +39,7 @@ in frontmatter, so this directory is invisible to the skill loader
 until the implementation is ready. That avoids accidental triggers
 while we're still designing the contract.
 
-When [Triage v0.7](https://github.com/CryptoJones/Triage/blob/main/DESIGN.md)
+When [Triage v0.9](https://github.com/CryptoJones/Triage/blob/main/DESIGN.md)
 ships, this README will be replaced with the live install / usage
 docs and `SKILL.md` will gain its frontmatter.
 
