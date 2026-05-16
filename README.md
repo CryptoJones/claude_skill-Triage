@@ -1,29 +1,33 @@
-# claude-skill-TaskPriorityReorder
+# claude_skill-Triage
 
-A [Claude Code](https://claude.com/claude-code) skill that re-orders the
-pending task list by priority. The `TaskCreate` tool issues IDs
-append-only — so "bump task X to the top" isn't a single API call. The
-skill captures every pending task's full content, deletes them, and
-recreates them in the new desired order, preserving subject +
-description + activeForm + metadata.
+A [Claude Code](https://claude.com/claude-code) skills repository
+companion to the [Triage](https://github.com/CryptoJones/Triage)
+meta-scheduler.
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg?logo=apache)](LICENSE)
-[![Codeberg](https://img.shields.io/badge/Codeberg-CryptoJones%2Fclaude--skill--TaskPriorityReorder-2185D0?logo=codeberg&logoColor=white)](https://codeberg.org/CryptoJones/claude-skill-TaskPriorityReorder)
-[![GitHub](https://img.shields.io/badge/GitHub-CryptoJones%2Fclaude--skill--TaskPriorityReorder-181717?logo=github&logoColor=white)](https://github.com/CryptoJones/claude-skill-TaskPriorityReorder)
+[![Codeberg](https://img.shields.io/badge/Codeberg-CryptoJones%2Fclaude__skill--Triage-2185D0?logo=codeberg&logoColor=white)](https://codeberg.org/CryptoJones/claude_skill-Triage)
+[![GitHub](https://img.shields.io/badge/GitHub-CryptoJones%2Fclaude__skill--Triage-181717?logo=github&logoColor=white)](https://github.com/CryptoJones/claude_skill-Triage)
 
-> Mirrored on both [GitHub](https://github.com/CryptoJones/claude-skill-TaskPriorityReorder) and
-> [Codeberg](https://codeberg.org/CryptoJones/claude-skill-TaskPriorityReorder). Issues filed on
+> Mirrored on both [GitHub](https://github.com/CryptoJones/claude_skill-Triage) and
+> [Codeberg](https://codeberg.org/CryptoJones/claude_skill-Triage). Issues filed on
 > either are welcome; commits are pushed to both.
 
 ---
 
-## What it does
+## Skills in this repository
 
-Claude Code's `TaskCreate` tool assigns IDs in creation order
-(append-only). The agent's documented work-on-tasks-in-ID-order
-heuristic means **whatever you created first naturally becomes
-highest priority** — which is the wrong default the moment a more
-urgent thing comes in.
+### `TaskPriorityReorder` (current)
+
+A deterministic procedure for re-ordering the pending task list by
+priority. Claude Code's `TaskCreate` tool issues IDs append-only — so
+"bump task X to the top" isn't a single API call. The skill captures
+every pending task's full content, deletes them, and recreates them in
+the new desired order, preserving subject + description + activeForm +
+metadata.
+
+The agent's documented work-on-tasks-in-ID-order heuristic means
+**whatever you created first naturally becomes highest priority** —
+which is the wrong default the moment a more urgent thing comes in.
 
 The skill turns "bump task X to the top" / "reprioritize the queue"
 into a deterministic procedure:
@@ -42,23 +46,38 @@ See [`SKILL.md`](SKILL.md) for the full skill definition: trigger
 phrase list, ordering pattern catalog ("move X to top", "swap X and Y",
 "new top-N is A, B, C"), in-progress handling, and a worked example.
 
+### `triage` (planned — v0.6 of [Triage](https://github.com/CryptoJones/Triage))
+
+The automatic counterpart: invokes `triage tick`, parses the output,
+and surfaces the recommended priority order to the operator with rule
+contributions. The human still confirms — the skill never auto-executes
+a reorder.
+
+The two skills coexist by design. `TaskPriorityReorder` is the manual
+override ("bump X to top"); `triage` is the rule-driven recommendation
+("what should I do next?").
+
 ## Install
 
 ```bash
-git clone https://github.com/CryptoJones/claude-skill-TaskPriorityReorder \
-  ~/.claude/skills/TaskPriorityReorder
+git clone https://github.com/CryptoJones/claude_skill-Triage \
+  ~/.claude/skills/Triage
 ```
 
 Or via Codeberg:
 
 ```bash
-git clone https://codeberg.org/CryptoJones/claude-skill-TaskPriorityReorder \
-  ~/.claude/skills/TaskPriorityReorder
+git clone https://codeberg.org/CryptoJones/claude_skill-Triage \
+  ~/.claude/skills/Triage
 ```
+
+The repo currently ships the `TaskPriorityReorder` skill at the
+repository root. When the `triage` skill is added, it will live in its
+own subdirectory and the install path will accept the parent directory.
 
 Restart Claude Code (or open `/hooks` once) for the skill to be picked up.
 
-## How Claude invokes it
+## How Claude invokes `TaskPriorityReorder`
 
 Frontmatter `description` triggers it on any of:
 
