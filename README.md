@@ -61,21 +61,36 @@ By design, the two are complementary:
 
 ## Install
 
-For the current `TaskPriorityReorder` skill:
+The repo is laid out so a single clone yields both the live
+`TaskPriorityReorder` skill (at the root) and the
+[reserved `triage/` slot](triage/) for the forthcoming
+`triage` skill:
+
+```
+claude_skill-Triage/
+├── SKILL.md         ← TaskPriorityReorder (live)
+└── triage/
+    ├── SKILL.md     ← placeholder (Triage v0.7)
+    └── README.md
+```
 
 ```bash
 # GitHub
 git clone https://github.com/CryptoJones/claude_skill-Triage \
-  ~/.claude/skills/TaskPriorityReorder
+  ~/.claude/skills/triage-suite
 
 # or Codeberg
 git clone https://codeberg.org/CryptoJones/claude_skill-Triage \
-  ~/.claude/skills/TaskPriorityReorder
+  ~/.claude/skills/triage-suite
 ```
 
-Restart Claude Code (or open `/hooks` once) for the skill to be picked up.
+Claude Code recursively scans the `~/.claude/skills/` tree for any
+`SKILL.md` with frontmatter, so cloning into a parent directory like
+`triage-suite/` exposes the root `TaskPriorityReorder` skill now and
+will pick up the `triage/` subdirectory automatically once its
+`SKILL.md` gains frontmatter at v0.7. No re-install needed.
 
-When the `triage` skill ships, it will live in a `triage/` subdirectory and the install path will accept the parent.
+Restart Claude Code (or open `/hooks` once) for the skill to be picked up.
 
 ---
 
