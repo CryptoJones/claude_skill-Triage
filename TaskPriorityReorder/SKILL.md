@@ -5,7 +5,7 @@ description: Re-order the pending task list by priority. The TaskCreate tool iss
 
 # TaskPriorityReorder
 
-> **Shared concepts:** see [`priority-context.md`](priority-context.md)
+> **Shared concepts:** see [`../priority-context.md`](../priority-context.md)
 > for the append-only-ID problem, the manual/automatic skill split,
 > the delete-then-recreate invariant, and the BBS presentation
 > aesthetic — all referenced by this skill and shared with the

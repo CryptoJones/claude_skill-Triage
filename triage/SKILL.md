@@ -47,7 +47,8 @@ Sketch:
 
 ## Companion: TaskPriorityReorder
 
-The existing `TaskPriorityReorder` skill at the repo root handles the
+The existing `TaskPriorityReorder` skill (in
+[`../TaskPriorityReorder/`](../TaskPriorityReorder/)) handles the
 **manual** override ("bump X to top", "swap X and Y", "demote X").
 This `triage` skill will handle the **automatic / signal-driven**
 recommendation ("what should I do next?").
