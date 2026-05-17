@@ -52,7 +52,7 @@ The operator says **"bump X to top"** (or `swap`, `promote`, `demote`,
 etc.) and the skill performs the delete + recreate cycle to make the
 queue reflect the new order. The trigger is an explicit human instruction.
 
-See [`SKILL.md`](SKILL.md) at the repo root for the full procedure.
+See [`TaskPriorityReorder/SKILL.md`](TaskPriorityReorder/SKILL.md) for the full procedure.
 
 ### `triage` — signal-driven recommender (planned, Triage v0.9)
 
@@ -92,7 +92,7 @@ Critical invariants:
 - **In-progress tasks are never silently recreated.** Recreate erases
   the in-progress state. Either skip them, or warn loudly + require
   explicit confirmation. See the safety section in
-  [`SKILL.md`](SKILL.md).
+  [`TaskPriorityReorder/SKILL.md`](TaskPriorityReorder/SKILL.md).
 - **Completed and deleted tasks are historical record.** They stay at
   their original IDs. The skills only touch *pending* tasks.
 
